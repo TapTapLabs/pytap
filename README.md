@@ -1,7 +1,6 @@
 # pytap
 Python command line tools
 
-
 ## line.py
 
 Splice and extract data from each line
@@ -21,17 +20,29 @@ prefix: B: postfix
 prefix: C: postfix
 
 # extract data with an RE:
-cat lines.txt | ./line.py --Splice "A|B"
+cat lines.txt | ./line.py --splice "A|B"
 A
 B
 
-# extract data with an RE:
-echo "x,y=100,x=100" | python line.py --Splice "y=\d+"
+# extract an RE:
+echo "x,y=100,x=100" | python line.py --splice "y=\d+"
 y=100
+
+# extact an RE group:
+echo "x=10,y=11" | python line.py --splice "y=(\d+)"
+11
+
+# prefix and postfix:
+echo "x=10,y=11" | python line.py --grep "y=(\d+)" --prefix "{" --postfix "}"
+{x=10,y=11}
+
+# replace / with:
+echo "x=10,y=11" | python line.py --replace "x=(\d+)" --with "x=666"
+x=666,y=11
 
 ```
 
-# jo.py
+## jo.py
 
 Create a nested JSON object from the command line
 
