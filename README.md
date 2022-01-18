@@ -43,6 +43,7 @@ x=666,y=11
 ```
 
 ## jo.py
+Inspired by https://github.com/jpmens/jo
 
 Create a nested JSON object from the command line
 
